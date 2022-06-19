@@ -4,6 +4,8 @@
  */
 package ezbooking;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -13,6 +15,9 @@ public class RegistrasiMitra extends javax.swing.JFrame {
     /**
      * Creates new form RegistrasiMitra
      */
+    com.ubaya.disprog.EzBookingWS_Service service;
+    com.ubaya.disprog.EzBookingWS port;
+
     public RegistrasiMitra() {
         initComponents();
     }
@@ -118,6 +123,11 @@ public class RegistrasiMitra extends javax.swing.JFrame {
         btnRegis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRegis.setForeground(new java.awt.Color(90, 42, 39));
         btnRegis.setText("REGISTER");
+        btnRegis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisActionPerformed(evt);
+            }
+        });
 
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnClose.setForeground(new java.awt.Color(90, 42, 39));
@@ -185,6 +195,24 @@ public class RegistrasiMitra extends javax.swing.JFrame {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    public String registrasiMitra(String namaPemilik, String namaResto, String username, String password, int jumlahMeja) {
+        service = new com.ubaya.disprog.EzBookingWS_Service();
+        port = service.getEzBookingWSPort();
+        return port.registrasiMitra(namaPemilik, namaResto, username, password, jumlahMeja);
+    }
+
+    private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
+        // TODO add your handling code here:
+        String retReg = this.registrasiMitra(txtNama.getText(), txtNamaRestoran.getText(),
+                txtUsername.getText(), txtPassword.getText(), Integer.parseInt(txtJumMeja.getText()));
+        if (retReg.equals("true")) {
+            JOptionPane.showMessageDialog(this, "Welcome! " + txtUsername.getText());
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "This account already registered");
+        }
+    }//GEN-LAST:event_btnRegisActionPerformed
 
     /**
      * @param args the command line arguments

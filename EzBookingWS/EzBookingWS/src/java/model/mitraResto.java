@@ -36,6 +36,15 @@ public class mitraResto {
         this.password = password;
         this.jumlahMeja = jumlahMeja;
     }
+    
+    public mitraResto() {
+        this.kodeResto = 0;
+        this.namaPemilik = "";
+        this.namaResto = "";
+        this.username = "";
+        this.password = "";
+        this.jumlahMeja = 0;
+    }
 
     public int getKodeResto() {
         return kodeResto;
@@ -120,4 +129,27 @@ public class mitraResto {
         }
         return temp;
     }
+    
+    public String viewListData() {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String baca = "";
+            try {
+                this.stat = (Statement) myModel.conn.createStatement();
+                this.result = this.stat.executeQuery("SELECT * FROM mitrarestaurant");
+                while (this.result.next()) {
+                    mitraResto mitra = new mitraResto(
+                            this.result.getInt("KodeResto"),
+                            this.result.getString("NamaPemilik"),
+                            this.result.getString("NamaResto"),
+                            this.result.getString("Username"),
+                            this.result.getString("Password"),
+                            this.result.getInt("JumlahMeja"));
+                    baca+=(String.valueOf(mitra.getKodeResto())+ "," +mitra.getNamaPemilik() + "," + mitra.getNamaResto()+ "," +mitra.getUsername()
+                            + "," +mitra.getPassword() +"," +String.valueOf(mitra.getJumlahMeja()));
+                }
+            } catch (Exception e) {
+                System.out.println("array error " + e.getMessage());
+            }
+            return baca;
+        }
 }

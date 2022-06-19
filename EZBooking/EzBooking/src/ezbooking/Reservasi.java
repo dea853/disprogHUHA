@@ -34,7 +34,6 @@ public class Reservasi extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtRestoran = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
-        dateTimePemesanan = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         txtJumlahOrang = new javax.swing.JPasswordField();
         btnReserve = new javax.swing.JButton();
@@ -78,7 +77,6 @@ public class Reservasi extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNama, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtRestoran, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(dateTimePemesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtJumlahOrang))
                 .addGap(24, 24, 24))
         );
@@ -94,9 +92,7 @@ public class Reservasi extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtRestoran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dateTimePemesanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJumlahOrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,7 +210,6 @@ public class Reservasi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnReserve;
-    private com.toedter.calendar.JDateChooser dateTimePemesanan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
