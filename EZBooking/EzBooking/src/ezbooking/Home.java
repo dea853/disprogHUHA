@@ -52,6 +52,11 @@ public class Home extends javax.swing.JFrame {
         btnAdmin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAdmin.setForeground(new java.awt.Color(90, 42, 39));
         btnAdmin.setText("ADMIN");
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel2.setText("Login sebagai :");
@@ -174,6 +179,10 @@ public class Home extends javax.swing.JFrame {
     private void btnMitraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMitraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMitraActionPerformed
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminActionPerformed
 
     /**
      * @param args the command line arguments
