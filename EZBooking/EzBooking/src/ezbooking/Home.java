@@ -104,6 +104,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         new Login().setVisible(true);
+        String nama = cbRole.getName();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
