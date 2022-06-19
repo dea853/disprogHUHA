@@ -93,16 +93,19 @@ public class RegistrasiPelanggan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnRegis.setBackground(new java.awt.Color(90, 42, 39));
         btnRegis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRegis.setForeground(new java.awt.Color(90, 42, 39));
         btnRegis.setText("REGISTER");
 
-        btnClose.setBackground(new java.awt.Color(90, 42, 39));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnClose.setForeground(new java.awt.Color(90, 42, 39));
         btnClose.setText("CLOSE");
         btnClose.setToolTipText("");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(196, 187, 175));
@@ -158,6 +161,10 @@ public class RegistrasiPelanggan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments

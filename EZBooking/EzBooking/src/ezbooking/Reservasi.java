@@ -37,7 +37,7 @@ public class Reservasi extends javax.swing.JFrame {
         dateTimePemesanan = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         txtJumlahOrang = new javax.swing.JPasswordField();
-        btnLogin = new javax.swing.JButton();
+        btnReserve = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -104,16 +104,19 @@ public class Reservasi extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        btnLogin.setBackground(new java.awt.Color(90, 42, 39));
-        btnLogin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(90, 42, 39));
-        btnLogin.setText("LOGIN");
+        btnReserve.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnReserve.setForeground(new java.awt.Color(90, 42, 39));
+        btnReserve.setText("RESERVE");
 
-        btnClose.setBackground(new java.awt.Color(90, 42, 39));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnClose.setForeground(new java.awt.Color(90, 42, 39));
         btnClose.setText("CLOSE");
         btnClose.setToolTipText("");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(196, 187, 175));
@@ -133,7 +136,7 @@ public class Reservasi extends javax.swing.JFrame {
                         .addComponent(jLabel6))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnLogin)
+                        .addComponent(btnReserve)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnClose)))
                 .addContainerGap())
@@ -149,7 +152,7 @@ public class Reservasi extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
+                    .addComponent(btnReserve)
                     .addComponent(btnClose))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -167,6 +170,10 @@ public class Reservasi extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,7 +213,7 @@ public class Reservasi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnReserve;
     private com.toedter.calendar.JDateChooser dateTimePemesanan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

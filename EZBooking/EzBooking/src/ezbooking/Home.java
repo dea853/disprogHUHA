@@ -48,7 +48,6 @@ public class Home extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(196, 187, 175));
 
-        btnAdmin.setBackground(new java.awt.Color(90, 42, 39));
         btnAdmin.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnAdmin.setForeground(new java.awt.Color(90, 42, 39));
         btnAdmin.setText("ADMIN");
@@ -61,7 +60,6 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel2.setText("Login sebagai :");
 
-        btnMitra.setBackground(new java.awt.Color(90, 42, 39));
         btnMitra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnMitra.setForeground(new java.awt.Color(90, 42, 39));
         btnMitra.setText("MITRA");
@@ -71,7 +69,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnPelanggan.setBackground(new java.awt.Color(90, 42, 39));
         btnPelanggan.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnPelanggan.setForeground(new java.awt.Color(90, 42, 39));
         btnPelanggan.setText("PELANGGAN");
@@ -106,7 +103,6 @@ public class Home extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(196, 187, 175));
 
-        btnRegis.setBackground(new java.awt.Color(90, 42, 39));
         btnRegis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRegis.setForeground(new java.awt.Color(90, 42, 39));
         btnRegis.setText("REGISTER");
