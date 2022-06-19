@@ -57,7 +57,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Login sebagai :");
 
         btnMitra.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
