@@ -8,6 +8,6 @@ package com.ubaya.uasdisprog;
  *
  * @author ramad
  */
-class administrator {
+class method {
     
 }

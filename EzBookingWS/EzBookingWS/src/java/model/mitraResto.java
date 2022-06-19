@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,9 +90,13 @@ public class mitraResto {
             stat = (Statement) myModel.conn.createStatement();
             
             if(!myModel.conn.isClosed()){
-                PreparedStatement sql = (PreparedStatement) myModel.conn.prepareStatement("INSERT INTO users (username, password) values(?,?)");
-                sql.setString(1, username);
-                sql.setString(2, password);
+                PreparedStatement sql = (PreparedStatement) myModel.conn.prepareStatement("INSERT INTO mitrarestaurant (NamaPemilik, NamaResto,"
+                        + "Username, Password, JumlahMeja) values(?,?,?,?,?)");
+                sql.setString(1,namaPemilik);
+                sql.setString(2,namaResto);
+                sql.setString(3,username);
+                sql.setString(4,password);
+                sql.setInt(5,jumlahMeja);
                 sql.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -99,4 +104,20 @@ public class mitraResto {
         }
     }
 
+    public ArrayList<String> display(){
+        ArrayList<String> temp = new ArrayList<>();
+        try {
+            stat =  (Statement) myModel.conn.createStatement();
+            result = stat.executeQuery("SELECT * FROM mitrarestaurant");
+            while(result.next()){
+                mitraResto mitra = new mitraResto(result.getInt("KodeRestaurant"), result.getString("NamaPemilik"), 
+                        result.getString("NamaRestaurant"),result.getString("Username"),
+                result.getString("Password"),result.getInt("JumlahMeja"));
+                temp.add(mitra.getUsername()+"-"+mitra.getPassword());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(mitraResto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return temp;
+    }
 }

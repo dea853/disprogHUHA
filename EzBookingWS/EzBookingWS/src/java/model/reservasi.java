@@ -6,15 +6,30 @@ package model;
   
 //import java.security.Timestamp;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  *
  * @author Windows 10 PRO
  */
-public class reservasi {
+public class reservasi{
     int kodeReservasi;
     //Timestamp tanggalPemesanan;
     int jumlahOrang;
+    Date tanggalPemesanan;
+    pelanggan.kodePelanggan;
+    mitraResto.kodeMitra;
     
+    Statement stat;
+    ResultSet result;
     public reservasi(int kodeReservasi, int jumlahOrang) {
         this.kodeReservasi = kodeReservasi;
         this.jumlahOrang = jumlahOrang;
@@ -36,5 +51,37 @@ public class reservasi {
         this.jumlahOrang = jumlahOrang;
     }
 
+    public void insert(){
+        try {
+            stat = (Statement) myModel.conn.createStatement();
+            
+            if(!myModel.conn.isClosed()){
+                PreparedStatement sql = (PreparedStatement) myModel.conn.prepareStatement("INSERT INTO reservasi (TanggalPemesanan,"
+                        + " JumlahOrang, KodePelanggan, KodeMitraRestaurant) values(?,?,?,?)");
+                sql.setString(1, tang);
+                sql.setString(2, password);
+                sql.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public ArrayList<String> display(){
+        ArrayList<String> temp = new ArrayList<>();
+        try {
+            stat =  (Statement) myModel.conn.createStatement();
+            result = stat.executeQuery("SELECT * FROM mitrarestaurant");
+            while(result.next()){
+                mitraResto mitra = new mitraResto(result.getInt("KodeRestaurant"), result.getString("NamaPemilik"), 
+                        result.getString("NamaRestaurant"),result.getString("Username"),
+                result.getString("Password"),result.getInt("JumlahMeja"));
+                temp.add(mitra.getUsername()+"-"+mitra.getPassword());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(mitraResto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return temp;
+    }
     
 }
