@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author Windows 10 PRO
@@ -13,6 +16,9 @@ public class pelanggan {
     String namaPengguna;
     String username;
     String password;
+    
+    Statement stat;
+    ResultSet resultSet;
     
     public pelanggan(int kodePelanggan, String namaPengguna, String username, String password) {
         this.kodePelanggan = kodePelanggan;
@@ -53,5 +59,20 @@ public class pelanggan {
         this.password = password;
     }
 
-
+    public void insert(){
+        try {
+            stat = (Statement) myModel.conn.createStatement();
+            
+            if(!myModel.conn.isClosed()){
+                PreparedStatement sql = (PreparedStatement) myModel.conn.prepareStatement("INSERT INTO pelanggan (NamaPengguna, Username, Password) values(?,?,?)");
+                sql.setInt(1, kodePelanggan);
+                sql.setString(2, namaPengguna);
+                sql.setString(3, username);
+                sql.setString(4, password);
+                sql.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
