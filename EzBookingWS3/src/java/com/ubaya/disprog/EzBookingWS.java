@@ -9,6 +9,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import model.mitraResto;
+import model.pelanggan;
 
 /**
  *
@@ -16,12 +17,14 @@ import model.mitraResto;
  */
 @WebService(serviceName = "EzBookingWS")
 public class EzBookingWS {
-mitraResto model;
+mitraResto mitra;
+    pelanggan pel;
     ArrayList<String> userList;
     
     public EzBookingWS(){
-        model = new mitraResto();
-        userList = model.display();
+        pel = new pelanggan();
+        mitra = new mitraResto();
+        userList = mitra.display();
     }
 
     /**
@@ -40,8 +43,19 @@ mitraResto model;
     public String registrasiMitra(@WebParam(name = "namaPemilik") String namaPemilik, @WebParam(name = "namaResto") String namaResto, @WebParam(name = "username") String username, @WebParam(name = "password") String password, @WebParam(name = "jumlahMeja") int jumlahMeja) {
         
         //TODO write your implementation code here:
-        model = new mitraResto(namaPemilik,namaResto,username, password,jumlahMeja);
-        model.insert();
+        mitra = new mitraResto(namaPemilik,namaResto,username, password,jumlahMeja);
+        mitra.insert();
+        userList.add(username+"-"+password);
+        return "true";
+    
+    }
+    
+    @WebMethod(operationName = "registrasiPelanggan")
+    public String registrasiPelanggan(@WebParam(name = "namaPengguna") String namaPengguna,@WebParam(name = "username") String username, @WebParam(name = "password") String password) {
+        
+        //TODO write your implementation code here:
+        pel = new pelanggan(namaPengguna, username, password);
+        pel.insert();
         userList.add(username+"-"+password);
         return "true";
     

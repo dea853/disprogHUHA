@@ -28,6 +28,8 @@ public class ObjectFactory {
     private final static QName _HelloResponse_QNAME = new QName("http://disprog.ubaya.com/", "helloResponse");
     private final static QName _RegistrasiMitra_QNAME = new QName("http://disprog.ubaya.com/", "registrasiMitra");
     private final static QName _RegistrasiMitraResponse_QNAME = new QName("http://disprog.ubaya.com/", "registrasiMitraResponse");
+    private final static QName _RegistrasiPelanggan_QNAME = new QName("http://disprog.ubaya.com/", "registrasiPelanggan");
+    private final static QName _RegistrasiPelangganResponse_QNAME = new QName("http://disprog.ubaya.com/", "registrasiPelangganResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.ubaya.disprog
@@ -66,6 +68,22 @@ public class ObjectFactory {
      */
     public RegistrasiMitraResponse createRegistrasiMitraResponse() {
         return new RegistrasiMitraResponse();
+    }
+
+    /**
+     * Create an instance of {@link RegistrasiPelanggan }
+     * 
+     */
+    public RegistrasiPelanggan createRegistrasiPelanggan() {
+        return new RegistrasiPelanggan();
+    }
+
+    /**
+     * Create an instance of {@link RegistrasiPelangganResponse }
+     * 
+     */
+    public RegistrasiPelangganResponse createRegistrasiPelangganResponse() {
+        return new RegistrasiPelangganResponse();
     }
 
     /**
@@ -118,6 +136,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://disprog.ubaya.com/", name = "registrasiMitraResponse")
     public JAXBElement<RegistrasiMitraResponse> createRegistrasiMitraResponse(RegistrasiMitraResponse value) {
         return new JAXBElement<RegistrasiMitraResponse>(_RegistrasiMitraResponse_QNAME, RegistrasiMitraResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrasiPelanggan }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RegistrasiPelanggan }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://disprog.ubaya.com/", name = "registrasiPelanggan")
+    public JAXBElement<RegistrasiPelanggan> createRegistrasiPelanggan(RegistrasiPelanggan value) {
+        return new JAXBElement<RegistrasiPelanggan>(_RegistrasiPelanggan_QNAME, RegistrasiPelanggan.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistrasiPelangganResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RegistrasiPelangganResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://disprog.ubaya.com/", name = "registrasiPelangganResponse")
+    public JAXBElement<RegistrasiPelangganResponse> createRegistrasiPelangganResponse(RegistrasiPelangganResponse value) {
+        return new JAXBElement<RegistrasiPelangganResponse>(_RegistrasiPelangganResponse_QNAME, RegistrasiPelangganResponse.class, null, value);
     }
 
 }

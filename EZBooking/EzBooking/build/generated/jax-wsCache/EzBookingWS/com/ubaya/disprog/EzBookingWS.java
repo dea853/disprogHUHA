@@ -41,6 +41,27 @@ public interface EzBookingWS {
 
     /**
      * 
+     * @param namaPengguna
+     * @param password
+     * @param username
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "registrasiPelanggan", targetNamespace = "http://disprog.ubaya.com/", className = "com.ubaya.disprog.RegistrasiPelanggan")
+    @ResponseWrapper(localName = "registrasiPelangganResponse", targetNamespace = "http://disprog.ubaya.com/", className = "com.ubaya.disprog.RegistrasiPelangganResponse")
+    @Action(input = "http://disprog.ubaya.com/EzBookingWS/registrasiPelangganRequest", output = "http://disprog.ubaya.com/EzBookingWS/registrasiPelangganResponse")
+    public String registrasiPelanggan(
+        @WebParam(name = "namaPengguna", targetNamespace = "")
+        String namaPengguna,
+        @WebParam(name = "username", targetNamespace = "")
+        String username,
+        @WebParam(name = "password", targetNamespace = "")
+        String password);
+
+    /**
+     * 
      * @param password
      * @param jumlahMeja
      * @param namaPemilik

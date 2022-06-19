@@ -4,11 +4,16 @@
  */
 package ezbooking;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
  */
 public class RegistrasiPelanggan extends javax.swing.JFrame {
+
+    com.ubaya.disprog.EzBookingWS_Service service;
+    com.ubaya.disprog.EzBookingWS port;
 
     /**
      * Creates new form RegistrasiPelanggan
@@ -96,6 +101,11 @@ public class RegistrasiPelanggan extends javax.swing.JFrame {
         btnRegis.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnRegis.setForeground(new java.awt.Color(90, 42, 39));
         btnRegis.setText("REGISTER");
+        btnRegis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisActionPerformed(evt);
+            }
+        });
 
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnClose.setForeground(new java.awt.Color(90, 42, 39));
@@ -165,6 +175,21 @@ public class RegistrasiPelanggan extends javax.swing.JFrame {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCloseActionPerformed
+    public String registrasiPelanggan(String namaPengguna, String username, String password) {
+        service = new com.ubaya.disprog.EzBookingWS_Service();
+        port = service.getEzBookingWSPort();
+        return port.registrasiPelanggan(namaPengguna, username, password);
+    }
+    private void btnRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisActionPerformed
+        // TODO add your handling code here:
+        String retReg = this.registrasiPelanggan(txtNama.getText(), txtUsername.getText(), txtPassword.getText());
+        if (retReg.equals("true")) {    
+            JOptionPane.showMessageDialog(this, "Welcome! " + txtUsername.getText());
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "This account already registered");
+        }
+    }//GEN-LAST:event_btnRegisActionPerformed
 
     /**
      * @param args the command line arguments
