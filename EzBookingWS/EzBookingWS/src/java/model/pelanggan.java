@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Windows 10 PRO
@@ -74,5 +77,21 @@ public class pelanggan {
         } catch (SQLException ex) {
             //Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public ArrayList<String> display(){
+        ArrayList<String> temp = new ArrayList<>();
+        try {
+            stat =  (Statement) myModel.conn.createStatement();
+            resultSet = stat.executeQuery("SELECT * FROM pelanggan");
+            while(resultSet.next()){
+                pelanggan p = new pelanggan(resultSet.getInt("KodePelanggan"), resultSet.getString("NamaPengguna"), 
+                        resultSet.getString("Username"),resultSet.getString("Password"));
+                temp.add(p.getUsername()+"-"+p.getPassword());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(mitraResto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return temp;
     }
 }
