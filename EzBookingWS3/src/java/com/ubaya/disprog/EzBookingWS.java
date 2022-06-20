@@ -61,7 +61,7 @@ mitraResto mitra;
     
     }
     
-    @WebMethod(operationName = ("cekLoginPelanggan")
+    @WebMethod(operationName = ("cekLoginPelanggan"))
     public String cekLoginPelanggan(@WebParam(name = "username") String username,@WebParam(name = "password") String password) {
         
         //TODO write your implementation code here:
