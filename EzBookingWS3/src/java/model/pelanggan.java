@@ -32,14 +32,13 @@ public class pelanggan {
     public Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            connect = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/db_uasdisprog","root","");
+            connect = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/db_uasdisprog", "root", "");
         } catch (Exception e) {
             System.out.println("Error di getconnection = " + e.getMessage());
         }
         return connect;
     }
-    
-    
+
     public pelanggan(int kodePelanggan, String namaPengguna, String username, String password) {
         this.kodePelanggan = kodePelanggan;
         this.namaPengguna = namaPengguna;
@@ -58,6 +57,12 @@ public class pelanggan {
     public pelanggan() {
         this.kodePelanggan = 0;
         this.namaPengguna = "";
+        this.username = "";
+        this.password = "";
+        getConnection();
+    }
+
+    public pelanggan(String username, String password) {
         this.username = "";
         this.password = "";
         getConnection();
@@ -112,8 +117,6 @@ public class pelanggan {
         }
     }
 
-    
-    
     public ArrayList<String> display() {
         ArrayList<String> temp = new ArrayList<>();
         try {
@@ -129,25 +132,47 @@ public class pelanggan {
         }
         return temp;
     }
-    
+
     public String viewListData() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         String baca = "";
-            try {
-                this.stat = (Statement) connect.createStatement();
-                this.resultSet = this.stat.executeQuery("SELECT * FROM pelanggan");
-                while (this.resultSet.next()) {
-                    pelanggan pel = new pelanggan(
-                            this.resultSet.getInt("KodePelanggan"),
-                            this.resultSet.getString("NamaPengguna"),
-                            this.resultSet.getString("Username"),
-                            this.resultSet.getString("Password"));
-                    baca+=(String.valueOf(pel.getKodePelanggan())+ "," +pel.getNamaPengguna()+ "," + pel.getUsername()
-                            + "," + pel.getPassword());
-                }
-            } catch (Exception e) {
-                System.out.println("array error " + e.getMessage());
+        try {
+            this.stat = (Statement) connect.createStatement();
+            this.resultSet = this.stat.executeQuery("SELECT * FROM pelanggan");
+            while (this.resultSet.next()) {
+                pelanggan pel = new pelanggan(
+                        this.resultSet.getInt("KodePelanggan"),
+                        this.resultSet.getString("NamaPengguna"),
+                        this.resultSet.getString("Username"),
+                        this.resultSet.getString("Password"));
+                baca += (String.valueOf(pel.getKodePelanggan()) + "," + pel.getNamaPengguna() + "," + pel.getUsername()
+                        + "," + pel.getPassword());
             }
-            return baca;
+        } catch (Exception e) {
+            System.out.println("array error " + e.getMessage());
         }
+        return baca;
+    }
+
+    public String cekLoginPelanggan(String password, String email) {
+
+        String hasil = null;
+        String check = "SELECT * FROM pelanggan where username='" + email + "'and password='" + password + "'";
+        try {
+            stat = (Statement) connect.createStatement();
+            PreparedStatement sql = (PreparedStatement) connect.prepareStatement(check);
+            resultSet = sql.executeQuery(check);
+            if (resultSet.next()) {
+                hasil = "ada";
+            } else {
+                hasil = "tidak";
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("cek login gagal" + e.getMessage());
+        }
+        return hasil;
+    }
+
 }

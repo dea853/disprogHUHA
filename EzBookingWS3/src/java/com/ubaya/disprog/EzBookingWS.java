@@ -60,4 +60,15 @@ mitraResto mitra;
         return "true";
     
     }
+    
+    @WebMethod(operationName = ("cekLoginPelanggan")
+    public String cekLoginPelanggan(@WebParam(name = "username") String username,@WebParam(name = "password") String password) {
+        
+        //TODO write your implementation code here:
+        pel = new pelanggan(username, password);
+        pel.insert();
+        userList.add(username+"-"+password);
+        return "true";
+    
+    }
 }
